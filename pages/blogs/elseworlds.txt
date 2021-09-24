@@ -1,0 +1,80 @@
+import Head from "next/head";
+import Link from "next/link";
+import {
+  Card,
+  Container,
+  Grid,
+  Image,
+  Segment,
+  Header,
+} from "semantic-ui-react";
+
+
+export async function getStaticProps(){
+  const res =await fetch('http://jsonplaceholder.typicode.com/posts')
+  const data = await res.json()
+
+  return{
+    props: {
+      posts:data.slice(0,4)
+    }
+  }
+}
+
+
+
+
+
+
+
+export default function myBlogs({posts}) {
+  return (
+    <>
+      <Head>
+        <title>Blogs</title>
+      </Head>
+
+      <Segment basic size="large">
+        <Container>
+          {blogs.map((blog) => (
+            <Segment basic style={segmentMini}>
+              <Link href={`/blogs/ ${blog.id}`} key={blog.id} passHref>
+                <Segment basic style={segmentMicro}>
+                  <Header
+                    as="h1"
+                    style={{ marginTop: "7em", marginLeft: "2em" }}
+                    textAlign=""
+                  >
+                    {blog.title}
+                  </Header>
+                  <Header
+                    as="h5"
+                    style={{ marginLeft: "4em", fontWeight: "bold" }}
+                  >
+                    <span style={{ fontWeight: "bold" }}>
+                      {" "}
+                      {blog.writer}
+                      <br></br>
+                    </span>
+                    {blog.snippet}
+                  </Header>
+                </Segment>
+              </Link>
+              <Image src={`${blog.img}`} size="huge" />
+            </Segment>
+          ))}
+        </Container>
+      </Segment>
+    </>
+  );
+}
+
+const segmentMini = {
+  display: "flex",
+  justifyContent: "space-between",
+};
+
+const segmentMicro = {
+  marginLeft: "1em",
+  width: "40em",
+};
