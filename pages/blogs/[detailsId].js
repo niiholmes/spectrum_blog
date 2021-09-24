@@ -7,7 +7,7 @@ export default function Details({ post }) {
       <p>{post.body}</p>
     </>
   );
-}
+}clearImmediate
 
 export async function getStaticPaths() {
   const res = await fetch("http://jsonplaceholder.typicode.com/posts");
