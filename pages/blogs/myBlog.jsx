@@ -9,15 +9,7 @@ import {
   Header,
 } from "semantic-ui-react";
 
-
-
-
-
-
-
-
-
-export default function myBlogs({posts}) {
+export default function myBlogs({ posts }) {
   return (
     <>
       <Head>
@@ -28,7 +20,7 @@ export default function myBlogs({posts}) {
         <Container>
           {posts.map((post) => (
             <Segment basic style={segmentMini}>
-              <Link href={`/blogs/ ${post.id}`} key={post.id} passHref>
+              <Link href={`/blogs/${post.id}`} key={post.id} passHref>
                 <Segment basic style={segmentMicro}>
                   <Header
                     as="h1"
@@ -41,9 +33,7 @@ export default function myBlogs({posts}) {
                     as="h5"
                     style={{ marginLeft: "4em", fontWeight: "bold" }}
                   >
-                    
-                      {post.body}
-                      
+                    {post.body}
                   </Header>
                 </Segment>
               </Link>
@@ -55,18 +45,16 @@ export default function myBlogs({posts}) {
   );
 }
 
+export async function getStaticProps() {
+  const res = await fetch("http://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
 
-export async function getStaticProps(){
-  const res =await fetch('http://jsonplaceholder.typicode.com/posts')
-  const data = await res.json()
-
-  return{
+  return {
     props: {
-      posts:data
-    }
-  }
+      posts: data,
+    },
+  };
 }
-
 
 const segmentMini = {
   display: "flex",
@@ -77,5 +65,3 @@ const segmentMicro = {
   marginLeft: "1em",
   width: "40em",
 };
-
-
