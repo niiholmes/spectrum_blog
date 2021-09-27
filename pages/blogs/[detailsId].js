@@ -1,13 +1,18 @@
+import Head from 'next/head'
 export default function Details({ post }) {
   return (
     <>
+
+    <Head>
+        <title>Article</title>
+    </Head>
       <h2>
-        {post.id} - {post.title}
+        {post.title}
       </h2>
       <p>{post.body}</p>
     </>
   );
-}clearImmediate
+}
 
 export async function getStaticPaths() {
   const res = await fetch("http://jsonplaceholder.typicode.com/posts");
@@ -16,18 +21,18 @@ export async function getStaticPaths() {
   const paths = data.map((post) => {
     return {
       params: {
-        detailsId: `${post.id}`,
+        detailsId: post.id.toString()
       },
     };
   });
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 }
 
 export async function getStaticProps(context) {
-  const { params } = context;
+  const id = context.params.detailsId
 
   const res = await fetch(
     `http://jsonplaceholder.typicode.com/posts/${params.detailsId}`

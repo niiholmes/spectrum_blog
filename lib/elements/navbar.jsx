@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container, Input, Menu } from "semantic-ui-react";
 
 export default function Navbar() {
-  const [activeMenu, setActiveMenu] = useState("myBlog");
+  const [activeMenu, setActiveMenu] = useState("spectrum");
   return (
     <>
       {/* <Container fluid style={navBarContainer}> */}
