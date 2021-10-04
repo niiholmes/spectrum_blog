@@ -14,6 +14,7 @@ export async function getStaticProps() {
   return {
     props: {
       arts: res.items,
+      revalidate: 1
     },
   };
 }

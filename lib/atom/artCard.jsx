@@ -10,7 +10,7 @@ export default function ArtCard({ art }) {
         <Link href={`/blogs/${slug}`} passHref>
           <Segment basic style={segmentMicro}>
             <div>
-              <Image
+              <Image 
                 src={"https:" + pic.fields.file.url}
                 width={pic.fields.file.details.image.width}
                 height={pic.fields.file.details.image.height}
