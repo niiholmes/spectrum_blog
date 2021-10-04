@@ -69,6 +69,7 @@ export default function myBlogs({posts}) {
   );
 }
 
+
 const segmentMini = {
   display: "flex",
   justifyContent: "space-between",
@@ -78,3 +79,56 @@ const segmentMicro = {
   marginLeft: "1em",
   width: "40em",
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const getPosts = async () => {
+//   const res = await fetch("http://jsonplaceholder.typicode.com/posts");
+//   const data = await res.json();
+  
+//     return data;
+// };
+
+
+
+// export async function getStaticPaths() {
+//    const res = await getPosts()
+  
+//   const paths = res.map(item => ({
+//     params: {id : item.id.toString()}
+//   }))
+
+
+//   return {paths, fallback:false}
+
+// }
+
+
+// export async function getStaticProps({params}) {
+//   const res = await getPosts()
+//   const datum = res[--params.id]
+
+//   return {
+//     props:{datum}
+//   }
+// }
+
+
