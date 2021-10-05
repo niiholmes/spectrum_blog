@@ -1,50 +1,44 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Segment, Header } from "semantic-ui-react";
+// import Image from "next/image";
+import { Header, Image } from "semantic-ui-react";
 
 export default function ArtCard({ art }) {
-  const { title, d8, slug, pic } = art.fields;
+  const { title, d8, slug, pic, } = art.fields;
+  console.log(art);
   return (
-    <div>
-      <Segment basic style={segmentMini} key={art.sys.id}>
-        <Link href={`/blogs/${slug}`} passHref>
-          <Segment basic style={segmentMicro}>
-            <div>
-              <Image 
-                src={"https:" + pic.fields.file.url}
-                width={pic.fields.file.details.image.width}
-                height={pic.fields.file.details.image.height}
-              />
-            </div>
-            <div>
-              <Header
-                as="h3"
-                style={{ marginTop: "1em", marginLeft: "2em" }}
-                textAlign="center"
-              >
-                {d8}
-              </Header>
-            </div>
-            <div>
-              <Header
-                as="h1"
-                style={{ marginTop: "1em", marginLeft: "2em" }}
-                textAlign="center"
-              >
-                {title}
-              </Header>
-            </div>
-          </Segment>
-        </Link>
-      </Segment>
+    <div style={segmentMini} key={art.sys.id}>
+      <div>
+      <Image centered
+        src={"https:" + pic.fields.file.url}
+        width={pic.fields.file.details.image.width}
+        height={pic.fields.file.details.image.height}
+        size='large'
+      />
+<div  style={{marginTop:"2em", textAlign:'center', marginBottom:'4em'}}>
+      <Header
+        as="h3"
+        
+        textAlign="center"
+      >
+        {d8}
+      </Header>
+
+      <Link href={`/blogs/${slug}`} passHref>
+        <Header
+          as="h1"
+          
+          textAlign="center"
+        >
+          {title}
+        </Header>
+      </Link>
+      </div>
+      </div>
     </div>
   );
 }
 
-const segmentMini = {
-  display: "flex",
-  justifyContent: "space-between",
-};
+const segmentMini = {};
 
 const segmentMicro = {
   marginLeft: "1em",

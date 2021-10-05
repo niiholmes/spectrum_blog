@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Container, Segment } from "semantic-ui-react";
+import { Container, Grid, Segment } from "semantic-ui-react";
 import { createClient } from "contentful";
 import ArtCard from "../../lib/atom/artCard";
 
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   return {
     props: {
       arts: res.items,
-      revalidate: 1
+      revalidate: 1,
     },
   };
 }
@@ -27,13 +27,17 @@ export default function myBlogs({ arts }) {
         <title>Blogs</title>
       </Head>
 
-      <Segment basic>
-        <Container>
-          {arts.map((art) => (
-            <ArtCard key={art.sys.id} art={art} />
-          ))}
-        </Container>
-      </Segment>
+      <Grid style={gridSpace} divided columns={2}>
+        {arts.map((art) => (
+          <ArtCard key={art.sys.id} art={art} />
+        ))}
+      </Grid>
     </>
   );
+}
+
+
+const gridSpace={
+  display:'flex',
+  justifyContent:'space-evenly'
 }

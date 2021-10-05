@@ -16,9 +16,11 @@ export default function Layout ({children}) {
 const mainContainer ={
     display:'flex',
     flexDirection:'column',
-    minHeight:'100vh'
+    minHeight:'100vh',
+    backgroundColor:'whitesmoke'
 }
 
 const mainSpace ={
-    flex: 1
+    flex: 1,
+    
 }

@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <>
       {/* <Container fluid style={navBarContainer}> */}
-      <Menu pointing secondary style={menu}>
+      <Menu pointing secondary style={menu} >
         <Link href="/">
           <Menu.Item
             name="spectrum"
@@ -70,4 +70,5 @@ const navBarContainer = {};
 const menu = {
   padding: "2em",
   border: "none",
+  marginBottom:'10em'
 };
